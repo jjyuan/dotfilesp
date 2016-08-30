@@ -1,6 +1,4 @@
 #
-# brent yi
-#
 
 echo '>>>>>>>>>>'
 if [ -n "$SSH_CONNECTION" ]; then
@@ -17,7 +15,7 @@ fi
 
 export LANG=en_US.UTF-8
 
-export HOME=/home/brent
+export HOME=/home/aaron
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/dotfilesp/common/zsh_custom
 export UPDATE_ZSH_DAYS=30

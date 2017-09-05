@@ -7,7 +7,6 @@ if [ -z "$HOME" ]; then
     export HOME=/home/brent
 fi
 
-<<<<<<< HEAD
 source $HOME/dotfilesp/thirdparty/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
@@ -17,15 +16,6 @@ antigen bundle history-substring-search
 antigen theme brentyi/brent-zsh-theme brent
 antigen bundle brentyi/zsh-ros
 antigen apply
-=======
-export HOME=/home/aaron
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$HOME/dotfilesp/common/zsh_custom
-export UPDATE_ZSH_DAYS=30
-
-ZSH_THEME="brent"
-plugins=(ros git vi-mode vundle history-substring-search)
->>>>>>> f482f2445dd063cdacdb4395b2e810570620cae3
 
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"

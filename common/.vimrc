@@ -173,9 +173,9 @@ nnoremap <Esc>^[ <Esc>^[
 """" general usability
 let mapleader = "\<Space>"
 vmap [[ <Esc>
-vmap ;; <Esc>
+vmap jk <Esc>
 imap [[ <Esc>
-imap ;; <Esc>
+imap jk <Esc>
 set timeoutlen=300 ttimeoutlen=10
 set backspace=2
 set history=35

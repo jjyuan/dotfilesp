@@ -17,14 +17,14 @@ ln -sfb --suffix=.bak ~/dotfilesp/local/.[^.]* $HOME/
 mv $HOME/.*.bak $backup_dir
 echo "DONE"
 
-# link neovim config to standard vimrc location
-echo -n "Linking nvim config... "
-mkdir -p ~/.config/nvim
-ln -sf ~/.vimrc ~/.config/nvim/init.vim
-echo "DONE"
+# # link neovim config to standard vimrc location
+# echo -n "Linking nvim config... "
+# mkdir -p ~/.config/nvim
+# ln -sf ~/.vimrc ~/.config/nvim/init.vim
+# echo "DONE"
 
 # install vundle + vim plugins
 # this is mostly handled in our vim config
 echo -n "Setting up Vundle... "
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 echo "DONE"

@@ -1,7 +1,5 @@
 #
 
-echo '>>>>>>>>>>'
-
 export LANG=en_US.UTF-8
 if [ -z "$HOME" ]; then
     export HOME=/home/brent
@@ -39,14 +37,14 @@ alias sudo="sudo "
 alias :q="exit"
 alias :e="vim"
 
-function u() {
+u() {
     cd ~/dotfilesp
     if [[ -z $(git status -s) ]]; then
         echo "Updating dotfiles"
         echo "----------"
         git pull
         # git submodule update --init --recursive
-        vim +PluginInstall +qall
+        vim +PlugInstall +qall
         rm -rf ~/.antigen
         # cleanup
         if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -60,6 +58,22 @@ function u() {
     fi
 }
 
+tmux_renumber() {
+    sessions=$(tmux ls | grep '^[0-9]\+:' | cut -f1 -d':' | sort)
+
+    new=0
+    while read -r old
+    do
+        tmux rename -t $old $new
+        ((new++))
+    done <<< "$sessions"
+}
+
+verbose_source() {
+    echo "+ source $@"
+    source $@
+}
+
 bindkey -M viins '[[' vi-cmd-mode
 bindkey -M viins ';;' vi-cmd-mode
 
@@ -69,6 +83,7 @@ if [ -n "$SSH_CONNECTION" ]; then
     echo "SSH CONNECTION"
 elif [ "${TMUX+set}" ]; then
     echo "----------"
+    tmux_renumber
 else
     # open tmux by default
     tmux -2

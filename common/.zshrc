@@ -20,6 +20,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="false"
 HIST_STAMPS="yyyy-mm-dd"
 MODE_INDICATOR="%F{black}%K{white} <<< %k%f"
+DISABLE_AUTO_TITLE="true"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export EDITOR='vim'
@@ -44,7 +45,7 @@ u() {
         echo "----------"
         git pull
         # git submodule update --init --recursive
-        vim +PlugInstall +qall
+        vim +PlugUpdate +qall
         rm -rf ~/.antigen
         # cleanup
         if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -59,12 +60,13 @@ u() {
 }
 
 tmux_renumber() {
-    sessions=$(tmux ls | grep '^[0-9]\+:' | cut -f1 -d':' | sort)
+    sessions=$(tmux ls | cut -f1 -d':')
 
+    total=$(($(echo $sessions | wc -l) - 1))
     new=0
     while read -r old
     do
-        tmux rename -t $old $new
+        tmux rename -t $old $new/$total
         ((new++))
     done <<< "$sessions"
 }
